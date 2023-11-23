@@ -28,8 +28,15 @@ namespace Library
 
         private static Product GetProduct(string description)
         {
-            var query = from Product product in productCatalog where product.Description == description select product;
-            return query.FirstOrDefault();
+            foreach (Product product in productCatalog)
+            {
+                if (product.Description == description)
+                {
+                    return product;
+                }
+            }
+
+            return null;
         }
     }
 
